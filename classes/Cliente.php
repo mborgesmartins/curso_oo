@@ -11,12 +11,12 @@ require_once('interfaces/ClienteInterface.php');
 
 class Cliente extends Pessoa implements ClienteInterface
 {
-
-
     private $id;
     private $limite_credito;
     private $prazo_pagamento;
     private $total_compras;
+    private $grau_importancia;
+    private $endereco_cobranca;
 
     /**
      * Cliente constructor.
@@ -25,6 +25,7 @@ class Cliente extends Pessoa implements ClienteInterface
     public function __construct($id)
     {
         $this->id = $id;
+        $this->endereco_cobranca = new Endereco();
     }
 
     public function getId()
@@ -88,6 +89,37 @@ class Cliente extends Pessoa implements ClienteInterface
         $this->total_compras = $this->total_compras - $valor;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getGrauImportancia()
+    {
+        return $this->grau_importancia;
+    }
+
+    /**
+     * @param mixed $grau_importancia
+     */
+    public function setGrauImportancia($grau_importancia)
+    {
+        $this->grau_importancia = $grau_importancia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnderecoCobranca()
+    {
+        return $this->endereco_cobranca;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function setEnderecoCobranca($endereco)
+    {
+        $this->endereco_cobranca = $endereco;
+    }
 
 }
 ?>

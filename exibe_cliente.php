@@ -23,15 +23,27 @@
 
 <body>
 
-    <h3>Cliente ID: <?=$id ?></h3>
+    <h2>Cliente ID: <?=$id ?> - Tipo --> <?=$cliente->getTipoPessoaNome() ?></h2>
+
+    <p>Grau de Importancia: <?=$cliente->getGrauImportancia() ?> </p>
 
     <p>Nome: <?=$cliente->getNome()?> </p>
-    <p>Endereco:<?=$cliente->getEndereco()?></p>
-    <p>Bairro:<?=$cliente->getBairro()?></p>
-    <p>Cidade:<?=$cliente->getCidade()?></p>
-    <p>UF:<?=$cliente->getUf()?></p>
-    <p>CEP:<?=$cliente->getCep()?></p>
+    <h3>Endereco</h3>
+    <p>Endereco:<?=$cliente->getEndereco()->getEndereco()?></p>
+    <p>Bairro:<?=$cliente->getEndereco()->getBairro()?></p>
+    <p>Cidade:<?=$cliente->getEndereco()->getCidade()?></p>
+    <p>UF:<?=$cliente->getEndereco()->getUf()?></p>
+    <p>CEP:<?=$cliente->getEndereco()->getCep()?></p>
+
+    <h3>Endereco Cobranca</h3>
+    <p>Endereco:<?=($cliente->getEnderecoCobranca()? $cliente->getEnderecoCobranca()->getEndereco():"-x-")?></p>
+    <p>Bairro:<?=($cliente->getEnderecoCobranca()? $cliente->getEnderecoCobranca()->getBairro():"-x-")?></p>
+    <p>Cidade:<?=($cliente->getEnderecoCobranca()? $cliente->getEnderecoCobranca()->getCidade():"-x-")?></p>
+    <p>UF:<?=($cliente->getEnderecoCobranca()? $cliente->getEnderecoCobranca()->getUf():"-x-")?></p>
+    <p>CEP:<?=($cliente->getEnderecoCobranca()? $cliente->getEnderecoCobranca()->getCep():"-x-")?></p>
+
     <hr>
+
     <p>Limite Credito:<?=$cliente->getLimiteCredito()?></p>
     <p>Prazo Pagamento:<?=$cliente->getPrazoPagamento()?></p>
     <p>Total Compras:<?=$cliente->getTotalCompras()?></p>

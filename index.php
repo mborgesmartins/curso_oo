@@ -31,6 +31,7 @@
     <table border="1">
     <tr>
     <td width="3%"><a href="index.php?order=<?=$order?>">ID</a></td>
+    <td width="5%">Tipo</td>
     <td width="30%">Nome</td>
     </tr>
 
@@ -40,6 +41,7 @@
 
             echo '<tr>';
             echo '<td>' . $id . '</td>';
+            echo '<td>' . $cliente->getTipoPessoaNome() . '</td>';
             echo '<td><a href="exibe_cliente.php?id=' .$id . '">' . $cliente->getNome() . '</a></td>';
             echo '</tr>';
 

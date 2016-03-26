@@ -9,6 +9,7 @@
  */
 
 require_once('classes/Cliente.php');
+require_once('Endereco.php');
 
 class ListaCliente
 {
@@ -53,14 +54,33 @@ class ListaCliente
             $cliente = $this->Novo($id);
 
             $cliente->setNome('NOME DO CLIENTE ' . $id);
-            $cliente->setEndereco('RUA DO CLIENTE' . $id);
-            $cliente->setBairro('BAIRRO DO CLIENTE' . $id);
-            $cliente->setCidade('CIDADE DO CLIENTE' . $id);
-            $cliente->setUf('RJ');
-            $cliente->setCep('CEP ' . (230000 + $id));
+
+            $endereco = new Endereco();
+            $endereco->setEndereco('RUA DO CLIENTE' . $id);
+            $endereco->setBairro('BAIRRO DO CLIENTE' . $id);
+            $endereco->setCidade('CIDADE DO CLIENTE' . $id);
+            $endereco->setUf('RJ');
+            $endereco->setCep('CEP ' . (230000 + $id));
+            $cliente->setEndereco($endereco);
+
             $cliente->setLimiteCredito(rand(200,2000));
             $cliente->setPrazoPagamento(rand(15,45));
             $cliente->RegistraCompra(rand(100,1000));
+
+            if (rand(1,10) < 5) {
+                $endereco = new Endereco();
+                $endereco->setEndereco('RUA DE COBRANCA CLIENTE' . $id);
+                $endereco->setBairro('BAIRRO DE COBRANCA CLIENTE' . $id);
+                $endereco->setCidade('CIDADE DE COBRANCA CLIENTE' . $id);
+                $endereco->setUf('RJ');
+                $endereco->setCep('CEP ' . (230000 + $id));
+                $cliente->setEnderecoCobranca($endereco);
+            }
+
+            if (rand(1,10) < 5) $cliente->setTipoPessoa('F'); else $cliente->setTipoPessoa('J');
+            $cliente->RegistraCompra(rand(100,1000));
+
+            $cliente->setGrauImportancia(rand(1,5));
 
         }
 

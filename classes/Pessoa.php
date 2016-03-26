@@ -8,6 +8,7 @@
  * Time: 11:59
  */
 require_once('interfaces/PessoaInterface.php');
+require_once('Endereco.php');
 
 
 class Pessoa implements PessoaInterface
@@ -16,11 +17,37 @@ class Pessoa implements PessoaInterface
     private $nome;
     private $cpf;
     private $endereco;
-    private $bairro;
-    private $cidade;
-    private $uf;
-    private $cep;
 
+    private $tipo_pessoa;
+
+    public function __construct() {
+
+        $this->endereco = new Endereco();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoPessoa()
+    {
+        return $this->tipo_pessoa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoPessoaNome()
+    {
+        return ($this->tipo_pessoa == 'F'? "Pessoa Fisica":"Pessoa Juridica");
+    }
+
+    /**
+     * @param mixed $tipo_pessoa
+     */
+    public function setTipoPessoa($tipo_pessoa)
+    {
+        $this->tipo_pessoa = $tipo_pessoa;
+    }
 
     /**
      * @return mixed
@@ -68,70 +95,6 @@ class Pessoa implements PessoaInterface
     public function setEndereco($endereco)
     {
         $this->endereco = $endereco;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBairro()
-    {
-        return $this->bairro;
-    }
-
-    /**
-     * @param mixed $bairro
-     */
-    public function setBairro($bairro)
-    {
-        $this->bairro = $bairro;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCidade()
-    {
-        return $this->cidade;
-    }
-
-    /**
-     * @param mixed $cidade
-     */
-    public function setCidade($cidade)
-    {
-        $this->cidade = $cidade;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUf()
-    {
-        return $this->uf;
-    }
-
-    /**
-     * @param mixed $uf
-     */
-    public function setUf($uf)
-    {
-        $this->uf = $uf;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCep()
-    {
-        return $this->cep;
-    }
-
-    /**
-     * @param mixed $cep
-     */
-    public function setCep($cep)
-    {
-        $this->cep = $cep;
     }
 
 }
