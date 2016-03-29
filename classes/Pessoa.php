@@ -8,7 +8,7 @@
  * Time: 11:59
  */
 require_once('interfaces/PessoaInterface.php');
-require_once('Endereco.php');
+require_once('classes/Endereco.php');
 
 
 class Pessoa implements PessoaInterface
